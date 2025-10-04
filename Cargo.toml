@@ -1,0 +1,11 @@
+[package]
+name = "solana-mpl-core"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+solana-program = "=2.3.0"
+mpl-core = "=0.10.1"
+borsh = "^0.10"
+thiserror = "^1.0"
+solana-sdk-ids = "=2.2.1"
