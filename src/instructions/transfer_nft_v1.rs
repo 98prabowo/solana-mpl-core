@@ -24,16 +24,8 @@ impl<'a, 'info> TryFrom<&'a [AccountInfo<'info>]> for TransferNftV1Accounts<'a, 
     type Error = ProgramError;
 
     fn try_from(accounts: &'a [AccountInfo<'info>]) -> Result<Self, Self::Error> {
-        let [
-            asset,
-            collection,
-            authority,
-            new_owner,
-            payer,
-            system_program,
-            log_wrapper,
-            mpl_core,
-        ] = accounts
+        let [asset, collection, authority, new_owner, payer, system_program, log_wrapper, mpl_core] =
+            accounts
         else {
             return Err(ProgramError::NotEnoughAccountKeys);
         };

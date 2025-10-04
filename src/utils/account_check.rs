@@ -25,10 +25,10 @@ impl AccountCheck for WritableAccount {
 
 impl OptionalAccountCheck for WritableAccount {
     fn check_optional<'info>(account: Option<&AccountInfo<'info>>) -> ProgramResult {
-        if let Some(account) = account
-            && !account.is_writable
-        {
-            return Err(ProgramError::InvalidAccountData);
+        if let Some(account) = account {
+            if !account.is_writable {
+                return Err(ProgramError::InvalidAccountData);
+            }
         }
 
         Ok(())
@@ -49,10 +49,10 @@ impl AccountCheck for SignerAccount {
 
 impl OptionalAccountCheck for SignerAccount {
     fn check_optional<'info>(account: Option<&AccountInfo<'info>>) -> ProgramResult {
-        if let Some(account) = account
-            && !account.is_signer
-        {
-            return Err(ProgramError::MissingRequiredSignature);
+        if let Some(account) = account {
+            if !account.is_signer {
+                return Err(ProgramError::MissingRequiredSignature);
+            }
         }
 
         Ok(())
@@ -73,10 +73,10 @@ impl AccountCheck for SystemAccount {
 
 impl OptionalAccountCheck for SystemAccount {
     fn check_optional<'info>(account: Option<&AccountInfo<'info>>) -> ProgramResult {
-        if let Some(account) = account
-            && account.owner != &system_program::ID
-        {
-            return Err(ProgramError::InvalidAccountOwner);
+        if let Some(account) = account {
+            if account.owner != &system_program::ID {
+                return Err(ProgramError::InvalidAccountOwner);
+            }
         }
 
         Ok(())
