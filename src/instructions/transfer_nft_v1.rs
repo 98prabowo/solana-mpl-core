@@ -51,6 +51,7 @@ impl<'a, 'info> TryFrom<&'a [AccountInfo<'info>]> for TransferNftV1Accounts<'a, 
     }
 }
 
+#[derive(Debug)]
 pub struct TransferNftV1<'a, 'info> {
     accounts: TransferNftV1Accounts<'a, 'info>,
 }

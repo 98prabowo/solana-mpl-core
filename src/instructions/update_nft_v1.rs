@@ -55,6 +55,7 @@ pub struct UpdateNftV1InstructionData {
     pub new_uri: Option<String>,
 }
 
+#[derive(Debug)]
 pub struct UpdateNftV1<'a, 'info> {
     pub accounts: UpdateNftV1Accounts<'a, 'info>,
     pub instruction_data: UpdateNftV1InstructionData,
